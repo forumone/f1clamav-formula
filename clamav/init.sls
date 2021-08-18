@@ -50,14 +50,14 @@ clamonacc.service:
   file.managed:
     - source:
       - salt://clamav/files/service.conf
-#    - template: jinja
+    - template: jinja
     - replace: True
     
 /etc/clamd.d/scan.conf:
   file.managed:
     - source:
       - salt://clamav/files/scan.conf
-#    - template: jinja
+    - template: jinja
     - replace: True
 
 /etc/clamd.d/freshclam.conf:
