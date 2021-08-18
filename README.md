@@ -4,6 +4,7 @@ Generic formula for installing ClamAV (clamav, clamav-update, clamd)
 
 To-Do:
   Finish templating .conf files to allow for more configuration options set in pillar data.
+  
     * LogFile location
     * LogFileMaxSize (May use M or m for megabytes)
     * LogTime (Log time with each message)
