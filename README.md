@@ -3,6 +3,11 @@
 Generic formula for installing ClamAV (clamav, clamav-update, clamd)
 
 To-Do:
+
+  Set this or you may face erroneous out of disk space errors
+
+  ```echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches```
+
   Finish templating .conf files to allow for more configuration options set in pillar data.
   
     * LogFile location
