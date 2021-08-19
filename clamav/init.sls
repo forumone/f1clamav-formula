@@ -74,3 +74,7 @@ freshclam-cron:
     - require:
       - pkg: clamav-update
       - file: freshclam-log
+
+fs.inotify.max_user_watches:
+  sysctl.present:
+    - value: 524288
