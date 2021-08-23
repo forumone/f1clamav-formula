@@ -46,6 +46,7 @@ clamonacc.service:
       - file: /etc/clamd.d/scan.conf
       - service: clamd@service
 
+# conf file for clamd
 /etc/clamd.d/service.conf:
   file.managed:
     - source:
@@ -53,6 +54,7 @@ clamonacc.service:
     - template: jinja
     - replace: True
     
+# conf file for clamonacc
 /etc/clamd.d/scan.conf:
   file.managed:
     - source:
@@ -60,11 +62,19 @@ clamonacc.service:
     - template: jinja
     - replace: True
 
+# conf file for freshclam
 /etc/clamd.d/freshclam.conf:
   file.managed:
     - source:
       - salt://clamav/files/freshclam.conf
       - replace: True
+
+# updated systemd unit file for clamonacc
+/etc/systemd/system/clamonacc.service:
+  file.managed:
+    - source:
+      - salt://clamav/files/clamonacc.service
+    - replace: True
 
 freshclam-cron:
   cron.present:
