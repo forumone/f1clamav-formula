@@ -4,7 +4,7 @@ amazon-linux-extras-install-epel:
     - unless:
       - /bin/amazon-linux-extras list | grep epel | grep -c enabled
 
-clamav:
+clamav-pkg:
   pkg.installed
 
 clamav-update:
