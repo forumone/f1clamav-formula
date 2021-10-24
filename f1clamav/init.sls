@@ -43,7 +43,7 @@ clamonacc.service:
   service.running:
     - require:
       - cmd: freshclam
-      - pkg: clamav
+      - pkg: clamav-pkg
       - file: /etc/clamd.d/scan.conf
       - service: clamd@service
 
