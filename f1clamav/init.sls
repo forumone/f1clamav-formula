@@ -56,7 +56,7 @@ clamonacc.service:
       - pkg: clamav-pkg
       - file: /etc/clamd.d/scan.conf
       - service: clamd@service
-    -  watch:
+    - watch:
       - file: /etc/clamd.d/scan.conf
 
 clamav-freshclam.service:
