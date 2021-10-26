@@ -14,21 +14,29 @@ clamav-update:
 clamd:
   pkg.installed
 
+/var/log/clamav:
+  file.directory:
+    - user: root
+    - group: root
+    - dir_mode: 750
+
 freshclam-log:
   file.managed:
-    - name: /var/log/freshclam.log
+    - name: /var/log/clamav/freshclam.log
     - mode: 660
     - require:
       - pkg: clamav-update
+      - file: /var/log/clamav
 
 
 freshclam:
   cmd.run:
-    - name: /usr/bin/freshclam --log=/var/log/freshclam.log
+    - name: /usr/bin/freshclam --log=/var/log/clamav/freshclam.log
     - require:
       - pkg: clamav-update
       - file: freshclam-log
       - file: /etc/clamd.d/freshclam.conf
+      - file: /var/log/clamav
 
 clamd@service:
   service.running:
