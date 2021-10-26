@@ -31,7 +31,7 @@ freshclam-log:
 
 freshclam:
   cmd.run:
-    - name: /usr/bin/freshclam --log=/var/log/clamav/freshclam.log
+    - name: /usr/bin/freshclam -u root --log=/var/log/clamav/freshclam.log
     - require:
       - pkg: clamav-update
       - file: freshclam-log
@@ -54,6 +54,11 @@ clamonacc.service:
       - pkg: clamav-pkg
       - file: /etc/clamd.d/scan.conf
       - service: clamd@service
+
+clamav-freshclam.service:
+  service.running:
+    - require:
+      - cmd: freshclam
 
 # conf file for clamd
 /etc/clamd.d/service.conf:
@@ -85,14 +90,14 @@ clamonacc.service:
       - salt://f1clamav/files/clamonacc.service
     - replace: True
 
-freshclam-cron:
-  cron.present:
-    - name: /usr/bin/freshclam --log=/var/log/freshclam.log
-    - minute: '*/15'
-    - identifier: freshclam
-    - require:
-      - pkg: clamav-update
-      - file: freshclam-log
+# freshclam-cron:
+#   cron.present:
+#     - name: /usr/bin/freshclam -u root --log=/var/log/freshclam.log
+#     - minute: '*/15'
+#     - identifier: freshclam
+#     - require:
+#       - pkg: clamav-update
+#       - file: freshclam-log
 
 fs.inotify.max_user_watches:
   sysctl.present:
