@@ -46,6 +46,8 @@ clamd@service:
       - file: /etc/clamd.d/service.conf
     - enable: True
     - init_delay: 30
+    - watch:
+      - file: /etc/clamd.d/service.conf
 
 clamonacc.service:
   service.running:
@@ -54,6 +56,8 @@ clamonacc.service:
       - pkg: clamav-pkg
       - file: /etc/clamd.d/scan.conf
       - service: clamd@service
+    -  watch:
+      - file: /etc/clamd.d/scan.conf
 
 clamav-freshclam.service:
   service.running:
