@@ -9,7 +9,7 @@ After=clamd@scan.service syslog.target network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/sbin/clamonacc -F --config-file=/etc/clamd.d/scan.conf --log=/var/log/clamonacc.log
+ExecStart=/usr/sbin/clamonacc -F --config-file=/etc/clamd.d/scan.conf --log=/var/log/clamav/clamonacc.log
 
 [Install]
 WantedBy=multi-user.target
