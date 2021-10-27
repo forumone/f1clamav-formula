@@ -94,15 +94,6 @@ clamav-freshclam.service:
       - salt://f1clamav/files/clamonacc.service
     - replace: True
 
-# freshclam-cron:
-#   cron.present:
-#     - name: /usr/bin/freshclam -u root --log=/var/log/freshclam.log
-#     - minute: '*/15'
-#     - identifier: freshclam
-#     - require:
-#       - pkg: clamav-update
-#       - file: freshclam-log
-
 fs.inotify.max_user_watches:
   sysctl.present:
     - value: 524288
