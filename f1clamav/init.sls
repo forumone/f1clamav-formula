@@ -28,7 +28,6 @@ freshclam-log:
       - pkg: clamav-update
       - file: /var/log/clamav
 
-
 freshclam:
   cmd.run:
     - name: /usr/bin/freshclam -u root --log=/var/log/clamav/freshclam.log
