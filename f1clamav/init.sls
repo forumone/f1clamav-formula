@@ -104,4 +104,5 @@ fs.inotify.max_user_watches:
       - salt://f1clamav/files/detected.sh
     - template: jinja
     - replace: True
+    - makedirs: True
 {% endif %}
