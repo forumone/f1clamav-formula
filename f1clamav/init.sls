@@ -105,4 +105,14 @@ fs.inotify.max_user_watches:
     - template: jinja
     - replace: True
     - makedirs: True
+
+dailyscan:
+  cron.present:
+    - name: /root/bin/detected.sh
+    - user: root
+    - minute: 0
+    - hour: 6
+    - dayweek: 1
+    
 {% endif %}
+
