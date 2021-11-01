@@ -100,8 +100,8 @@ fs.inotify.max_user_watches:
 {% if grains.roles is defined and 'utility' in grains.roles %}
 /root/bin/detected.sh:
   file.managed:
-    - source:
-    - salt://f1clamav/files/detected.sh
+    - source: 
+      - salt://f1clamav/files/detected.sh
     - template: jinja
     - replace: True
 {% endif %}
