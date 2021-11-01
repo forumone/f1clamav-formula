@@ -96,3 +96,12 @@ clamav-freshclam.service:
 fs.inotify.max_user_watches:
   sysctl.present:
     - value: 524288
+
+{% if grains.roles is defined and 'utility' in grains.roles %}
+/root/bin/detected.sh:
+  file.managed:
+    - source:
+    - salt://f1clamav/files/detected.sh
+    - template: jinja
+    - replace: True
+{% endif %}
