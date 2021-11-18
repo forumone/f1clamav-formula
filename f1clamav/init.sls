@@ -48,6 +48,8 @@ clamd@service:
     - watch:
       - file: /etc/clamd.d/service.conf
 
+# only run on non utility instances
+{% if grains.roles is defined and 'utility' not in grains.roles %}
 clamonacc.service:
   service.running:
     - require:
@@ -57,6 +59,7 @@ clamonacc.service:
       - service: clamd@service
     - watch:
       - file: /etc/clamd.d/scan.conf
+{% endif %}
 
 clamav-freshclam.service:
   service.running:
