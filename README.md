@@ -26,7 +26,6 @@ clamav:
     - /omitting/this/will/make/onaccessscanner/not/do/anything
   cron:
     dailyscan:
-      name: "lscron"
       cmd: "/bin/ls"
       user: "root"
       hour: "1"

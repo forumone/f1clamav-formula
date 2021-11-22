@@ -113,7 +113,7 @@ fs.inotify.max_user_watches:
 
 {{ data.name }}_cron:
   cron.present:
-    - name: {{ data.name }}
+    - name: {{ data.cmd }}
     - user: {{ data.user }}
     - minute: {{ data.minute }}
     - hour: {{ data.hour }}
