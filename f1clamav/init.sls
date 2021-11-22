@@ -111,7 +111,7 @@ fs.inotify.max_user_watches:
 
 {% for key, data in pillar.clamav.cron.items() %}
 
-{{ data.name }}_cron:
+{{ data.identifier }}_cron:
   cron.present:
     - name: {{ data.cmd }}
     - user: {{ data.user }}
