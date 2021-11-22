@@ -109,13 +109,33 @@ fs.inotify.max_user_watches:
     - replace: True
     - makedirs: True
 
-dailyscan:
+{% for key, data in pillar.clamav.cron.items() %}
+
+{{ data.name }}_cron:
   cron.present:
-    - name: /root/bin/detected.sh
-    - user: root
-    - minute: 0
-    - hour: 6
-    - dayweek: 1
+    - name: {{ data.cmd }}
+    - user: {{ data.user }}
+    - minute: {{ data.minute }}
+    - hour: {{ data.hour }}
+    - identifier: {{ data.identifier }}
+
+{% if data.daymonth is defined %}
+    - daymonth: {{ data.daymonth }}
+{% endif %}
+
+{% if data.month is defined %}
+    - month: {{ data.month }}
+{% endif %}
+
+{% if data.dayweek is defined %}
+    - dayweek: {{ data.dayweek }}
+{% endif %}
+
+{% if data.special is defined %}
+    - special: {{ data.special }}
+{% endif %}
+
+{% endfor %}
     
 {% endif %}
 

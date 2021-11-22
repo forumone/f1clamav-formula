@@ -24,5 +24,12 @@ clamav:
     - /a/path/you/want/to/scan
     - /one/or/more
     - /omitting/this/will/make/onaccessscanner/not/do/anything
+  cron:
+    dailyscan:
+      cmd: "/bin/ls"
+      user: "root"
+      hour: "1"
+      minute: "00"
+      identifier: "clamcron"
 ```
 
