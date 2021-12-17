@@ -1,11 +1,11 @@
 # f1clamav-formula
 
-Generic formula for installing ClamAV (clamav, clamav-update, clamd)
+Generic formula for installing ClamAV (clamav, clamav-update, clamd)  
 
-To-Do:
-  Current command that runs on VirusEvent triggering has the AWS region hard coded in
-  Finish templating .conf files to allow for more configuration options set in pillar data.
-  
+## To-Do:  
+  Current command that runs on VirusEvent triggering has the AWS region hard coded in  
+  Finish templating .conf files to allow for more configuration options set in pillar data.  
+    
     * LogFile location
     * LogFileMaxSize (May use M or m for megabytes)
     * LogTime (Log time with each message)
@@ -14,7 +14,8 @@ To-Do:
     * TCPAddr
     * User (defaults to clamscan)
     * Cron schedule for freshclam
-
+    
+      
 
 Pillar Definition:
 
