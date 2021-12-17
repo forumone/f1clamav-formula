@@ -3,7 +3,7 @@
 Generic formula for installing ClamAV (clamav, clamav-update, clamd)
 
 To-Do:
-
+  Current command that runs on VirusEvent triggering has the AWS region hard coded in
   Finish templating .conf files to allow for more configuration options set in pillar data.
   
     * LogFile location
@@ -24,6 +24,8 @@ clamav:
     - /a/path/you/want/to/scan
     - /one/or/more
     - /omitting/this/will/make/onaccessscanner/not/do/anything
+  sns_arn:
+    - arn:of:sns:topic:for:notifications
   cron:
     dailyscan:
       cmd: "/bin/ls"
