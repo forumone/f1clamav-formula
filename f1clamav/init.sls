@@ -23,6 +23,7 @@ clamd:
 freshclam-log:
   file.managed:
     - name: /var/log/clamav/freshclam.log
+    - replace: False
     - mode: 660
     - require:
       - pkg: clamav-update
