@@ -84,17 +84,17 @@ clamav-freshclam.service:
     - replace: True
 
 # conf file for freshclam
-/etc/clamd.d/freshclam.conf:
+etc-clamd.d-freshclam.conf:
   file.managed:
-    - source:
-      - salt://f1clamav/files/freshclam.conf
+    - name: /etc/clamd.d/freshclam.conf
+    - source: salt://f1clamav/files/freshclam.conf
     - replace: True
+    - makedirs: True
 
 # updated systemd unit file for clamonacc
 /etc/systemd/system/clamonacc.service:
   file.managed:
-    - source:
-      - salt://f1clamav/files/clamonacc.service
+    - source: salt://f1clamav/files/clamonacc.service
     - replace: True
 
 fs.inotify.max_user_watches:
