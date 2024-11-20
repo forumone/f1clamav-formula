@@ -68,10 +68,10 @@ clamav-freshclam.service:
       - cmd: freshclam
 
 # conf file for clamd
-/etc/clamd.d/service.conf:
+etc-clamd.d-service.conf:
   file.managed:
-    - source:
-      - salt://f1clamav/files/service.conf
+    - name: /etc/clamd.d/service.conf
+    - source: salt://f1clamav/files/service.conf
     - template: jinja
     - replace: True
     
