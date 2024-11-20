@@ -76,10 +76,10 @@ clamav-freshclam.service:
     - replace: True
     
 # conf file for clamonacc
-/etc/clamd.d/scan.conf:
+etc-clamd.d-scan.conf:
   file.managed:
-    - source:
-      - salt://f1clamav/files/scan.conf
+    - name: /etc/clamd.d/scan.conf
+    - source: salt://f1clamav/files/scan.conf
     - template: jinja
     - replace: True
 
@@ -92,8 +92,9 @@ etc-clamd.d-freshclam.conf:
     - makedirs: True
 
 # updated systemd unit file for clamonacc
-/etc/systemd/system/clamonacc.service:
+etc-systemd-system-clamonacc.service:
   file.managed:
+    - name: /etc/systemd/system/clamonacc.service
     - source: salt://f1clamav/files/clamonacc.service
     - replace: True
 
@@ -102,10 +103,10 @@ fs.inotify.max_user_watches:
     - value: 524288
 
 {% if grains.roles is defined and 'utility' in grains.roles %}
-/root/bin/detected.sh:
+root-bin-detected.sh:
   file.managed:
-    - source: 
-      - salt://f1clamav/files/detected.sh
+    - name: /root/bin/detected.sh
+    - source: salt://f1clamav/files/detected.sh
     - template: jinja
     - replace: True
     - makedirs: True
