@@ -88,7 +88,7 @@ clamav-freshclam.service:
   file.managed:
     - source:
       - salt://f1clamav/files/freshclam.conf
-      - replace: True
+    - replace: True
 
 # updated systemd unit file for clamonacc
 /etc/systemd/system/clamonacc.service:
